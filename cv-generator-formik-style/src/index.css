@@ -1,0 +1,287 @@
+/* Import Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@300&family=PT+Sans&family=Roboto:wght@500&display=swap');
+
+/* Layout Stuff */
+*{
+  /* font-family: 'Open Sans', sans-serif; */
+  /* font-family: 'PT Sans', sans-serif; */
+  font-family: 'Roboto', sans-serif;
+
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  
+  width: 100%;
+  background-color: #282C35;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > .button-wrapper .active{
+  box-shadow: 0px 0px 6px 3px rgb(255, 255, 255);
+  
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-wrapper{
+  min-width: 280px;
+  margin-left: 1rem;
+  margin-top: 5px;
+}
+
+header h3{
+  margin-right: 1rem;
+}
+
+
+
+/* Main */
+.main-content{
+  height: fit-content;
+}
+
+/* Form Component */
+
+.form-section{
+  margin-bottom: 3rem;
+  
+}
+
+.form-section-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  justify-content: start;
+  border: solid grey 1px;
+}
+
+.form-section-wrapper label{
+  color: rgb(27, 27, 27);
+  display: flex;
+  gap: 20px;
+}
+
+/* Resume Page */
+.resume-container{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 90%;
+  max-width: 800px;
+}
+
+.resume-container h1, .resume-container h3{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.resume-container h1{
+  font-size: clamp(1rem, 12vw, 4rem);
+  font-weight: 1000;
+}
+
+.resume-container h3{
+  font-size: 2.5rem;
+}
+
+.resume-container p{
+  font-family: 'PT Sans', sans-serif;
+  margin: 0px;
+}
+
+
+.resume-name{
+  text-align: center;
+}
+
+.contact-info-flexbox{
+  display: flex;
+  justify-content: space-around;
+}
+
+.education-flexbox{
+  display: flex;
+  flex-direction: column;
+}
+
+.section-flexbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.school-details{
+  display: flex;
+  flex-direction: column;
+}
+
+.work-flexbox{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.job-details, .school-details{
+  gap:12px;
+}
+
+.company-name-text{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  /* position: absolute;
+  bottom: 0;
+  left: 0; */
+  width: 100%;
+  background-color: #282C35;
+  color: #ffffff;
+}
+
+
+
+/* Form User Feedback */
+.invalid{
+  background-color: rgb(252, 208, 208);
+  border: solid red 1px;
+}
+
+.form-feedback{
+  margin: 0;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  color: red;
+}
+
+.fine-print{
+  font-size: 10px;
+}
+
+.visible{
+  display: inline;
+}
+
+.hidden{
+  display: none;
+}
+
+
+
+
+
+
+/* Link Styling */
+
+a {
+  color: #6565ed;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #eb7d7d;
+  text-decoration: underline;
+}
+
+
+
+/* Button Styling */
+/* Button */
+.button-wrapper button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #4b4e57;
+  color: #ffffff;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  width: 130px;
+  cursor: pointer;
+}
+
+/* Button Hover */
+.button-wrapper button:hover {
+  
+  background-color: #8c9197;
+  color: #fffefe;
+}
+
+/* Button Selected */
+.button-wrapper button.selected {
+  
+  background-color: #3B4048;
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+/* Responsive design */
+
+@media only screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-div {
+    width: auto;
+    
+  }
+
+  header h3, h1{
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+
+  
+}
+
+@media only screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-div {
+    width: auto;
+    
+  }
+
+  header h3, h1{
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+}
