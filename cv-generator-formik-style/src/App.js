@@ -24,6 +24,21 @@ function App() {
     major:'',
     startDate: '',
     gradDate: '',
+    companyName1: '',
+    position1: '',
+    tasks1: '',
+    jobStartDate1: '',
+    jobEndDate1: '',
+    companyName2: '',
+    position2: '',
+    tasks2: '',
+    jobStartDate2: '',
+    jobEndDate2: '',
+    companyName3: '',
+    position3: '',
+    tasks3: '',
+    jobStartDate3: '',
+    jobEndDate3: '',
 
   }
 

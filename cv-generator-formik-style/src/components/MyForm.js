@@ -17,14 +17,15 @@ function MyForm({handleFormData, formData}) {
   async function onSubmit(values, actions){
     //timeout and disabled button CSS let user know info is being submitted
     console.log('values',values);
+    console.log('you just slammed the submit button!!!!!!!');
     console.log('actions',actions);
     handleFormData(values);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
   //any formik component must define 3 key props: initial values, validate, and onSubmit handler.
   //handleSubmit just calls onSubmit
   const {values, errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting} = useFormik({
-    enableReinitialize: false,
+    
     initialValues: {
       age: formData.age,
       email: formData.email,
@@ -36,12 +37,28 @@ function MyForm({handleFormData, formData}) {
       major:formData.major,
       startDate: formData.startDate,
       gradDate: formData.gradDate,
+      companyName1: formData.companyName1,
+      position1: formData.position1,
+      tasks1: formData.tasks1,
+      jobStartDate1: formData.jobStartDate1,
+      jobEndDate1: formData.jobEndDate1,
+      companyName2: formData.companyName2,
+      position2: formData.position2,
+      tasks2: formData.tasks2,
+      jobStartDate2: formData.jobStartDate2,
+      jobEndDate2: formData.jobEndDate2,
+      companyName3: formData.companyName3,
+      position3: formData.position3,
+      tasks3: formData.tasks3,
+      jobStartDate3: formData.jobStartDate3,
+      jobEndDate3: formData.jobEndDate3,
     },
     validationSchema: resumeSchema,
     onSubmit,
   });
 
   console.log('data from app state', formData);
+  console.log('values', values);
 
 
 
@@ -110,7 +127,7 @@ function MyForm({handleFormData, formData}) {
       />
       {errors.phone && touched.phone && <p className='error'>{errors.phone}</p>}
       <br />
-      {/* UPDATE PAST HERE */}
+      
       <label htmlFor="school">School</label>
       <input 
         id="school" 
@@ -176,8 +193,211 @@ function MyForm({handleFormData, formData}) {
       {errors.gradDate && touched.gradDate && <p className='error'>{errors.gradDate}</p>}
       <br />
 
+      {/* UPDATE PAST HERE */}
+      <div className="job-section-wrapper">
+        <h4>Job 1</h4>
+        <label htmlFor="companyName1">Company Name</label>
+        <input
+          id="companyName1"
+          type="text"
+          placeholder="Company or organization name"
+          value={values.companyName1}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.companyName1 && touched.companyName1 ? 'input-error' : ''}
+        />
+        {errors.companyName1 && touched.companyName1 && <p className='error'>{errors.companyName1}</p>}
+        <br />
+        <label htmlFor="position1">Position</label>
+        <input
+          id="position1"
+          type="text"
+          placeholder="Position/Title/Role"
+          value={values.position1}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.position1 && touched.position1 ? 'input-error' : ''}
+        />
+        {errors.position1 && touched.position1 && <p className='error'>{errors.position1}</p>}
+        <br />
+        <label htmlFor="tasks1">Tasks</label>
+        <textarea
+          id="tasks1"
+          type="textarea"
+          maxLength={200}
+          placeholder="Description of duties"
+          value={values.tasks1}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.tasks1 && touched.tasks1 ? 'input-error' : ''}
+        />
+        {errors.tasks1 && touched.tasks1 && <p className='error'>{errors.tasks1}</p>}
+        <br />
+
+        <label htmlFor="startDate1">Started</label>
+        <input
+          id="jobStartDate1"
+          type="text"
+          placeholder="Year hired"
+          value={values.jobStartDate1}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.jobStartDate1 && touched.jobStartDate1 ? 'input-error' : ''}
+        />
+        {errors.jobStartDate1 && touched.jobStartDate1 && <p className='error'>{errors.jobStartDate1}</p>}
+        <br />
+
+        <label htmlFor="jobEndDate1">Left</label>
+        <input
+          id="jobEndDate1"
+          type="text"
+          placeholder="Last year or present job"
+          value={values.jobEndDate1}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.jobEndDate1 && touched.jobEndDate1 ? 'input-error' : ''}
+        />
+        {errors.jobEndDate1 && touched.jobEndDate1 && <p className='error'>{errors.jobEndDate1}</p>}
+        <br />
+      </div>
+
+      <div className="job-section-wrapper">
+        <h4>Job 2</h4>
+        <label htmlFor="companyName2">Company Name</label>
+        <input
+          id="companyName2"
+          type="text"
+          placeholder="Company or organization name"
+          value={values.companyName2}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.companyName2 && touched.companyName2 ? 'input-error' : ''}
+        />
+        {errors.companyName2 && touched.companyName2 && <p className='error'>{errors.companyName2}</p>}
+        <br />
+        <label htmlFor="position2">Position</label>
+        <input
+          id="position2"
+          type="text"
+          placeholder="Position/Title/Role"
+          value={values.position2}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.position2 && touched.position2 ? 'input-error' : ''}
+        />
+        {errors.position2 && touched.position2 && <p className='error'>{errors.position2}</p>}
+        <br />
+        <label htmlFor="tasks2">Tasks</label>
+        <textarea
+          id="tasks2"
+          type="textarea"
+          maxLength={200}
+          placeholder="Description of duties"
+          value={values.tasks2}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.tasks2 && touched.tasks2 ? 'input-error' : ''}
+        />
+        {errors.tasks2 && touched.tasks2 && <p className='error'>{errors.tasks2}</p>}
+        <br />
+
+        <label htmlFor="startDate2">Started</label>
+        <input
+          id="jobStartDate2"
+          type="text"
+          placeholder="Year hired"
+          value={values.jobStartDate2}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.jobStartDate2 && touched.jobStartDate2 ? 'input-error' : ''}
+        />
+        {errors.jobStartDate2 && touched.jobStartDate2 && <p className='error'>{errors.jobStartDate2}</p>}
+        <br />
+
+        <label htmlFor="jobEndDate2">Left</label>
+        <input
+          id="jobEndDate2"
+          type="text"
+          placeholder="Last year or present job"
+          value={values.jobEndDate2}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.jobEndDate2 && touched.jobEndDate2 ? 'input-error' : ''}
+        />
+        {errors.jobEndDate2 && touched.jobEndDate2 && <p className='error'>{errors.jobEndDate2}</p>}
+        <br />
+      </div>
+
+      <div className="job-section-wrapper">
+        <h4>Job 3</h4>
+        <label htmlFor="companyName3">Company Name</label>
+        <input
+          id="companyName3"
+          type="text"
+          placeholder="Company or organization name"
+          value={values.companyName3}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.companyName3 && touched.companyName3 ? 'input-error' : ''}
+        />
+        {errors.companyName3 && touched.companyName3 && <p className='error'>{errors.companyName3}</p>}
+        <br />
+        <label htmlFor="position3">Position</label>
+        <input
+          id="position3"
+          type="text"
+          placeholder="Position/Title/Role"
+          value={values.position3}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.position3 && touched.position3 ? 'input-error' : ''}
+        />
+        {errors.position3 && touched.position3 && <p className='error'>{errors.position3}</p>}
+        <br />
+        <label htmlFor="tasks3">Tasks</label>
+        <textarea
+          id="tasks3"
+          type="textarea"
+          maxLength={200}
+          placeholder="Description of duties"
+          value={values.tasks3}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.tasks3 && touched.tasks3 ? 'input-error' : ''}
+        />
+        {errors.tasks3 && touched.tasks3 && <p className='error'>{errors.tasks3}</p>}
+        <br />
+
+        <label htmlFor="startDate3">Started</label>
+        <input
+          id="jobStartDate3"
+          type="text"
+          placeholder="Year hired"
+          value={values.jobStartDate3}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.jobStartDate3 && touched.jobStartDate3 ? 'input-error' : ''}
+        />
+        {errors.jobStartDate3 && touched.jobStartDate3 && <p className='error'>{errors.jobStartDate3}</p>}
+        <br />
+
+        <label htmlFor="jobEndDate3">Left</label>
+        <input
+          id="jobEndDate3"
+          type="text"
+          placeholder="Last year or present job"
+          value={values.jobEndDate3}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className={errors.jobEndDate3 && touched.jobEndDate3 ? 'input-error' : ''}
+        />
+        {errors.jobEndDate3 && touched.jobEndDate3 && <p className='error'>{errors.jobEndDate3}</p>}
+        <br />
+      </div>
 
       
+
+  
       
       <button disabled={isSubmitting} type="submit">Submit</button>
     </form>
