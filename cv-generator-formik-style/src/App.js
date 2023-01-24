@@ -12,16 +12,17 @@ function App() {
   /////////top scope variables/////////////
   //control which page is rendered to main
   const [onFormPage, setOnFormPage] = React.useState(true);
-
-  //conditionally render what content renders based on page selection
-  const currentPage = onFormPage ? <MyForm handleFormData={handleFormData} /> : <Resume />
-
   //set state
   const [formData, setFormData] = React.useState({
 
   }
 
   );
+
+  //conditionally render what content renders based on page selection
+  const currentPage = onFormPage ? <MyForm handleFormData={handleFormData} /> : <Resume formData={formData} />
+
+  
   
 
   ////////functions/////////
