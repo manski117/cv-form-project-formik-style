@@ -171,7 +171,7 @@ footer {
   border: solid red 1px;
 }
 
-.form-feedback{
+.error{
   margin: 0;
   font-size: 0.8rem;
   font-family: Arial, Helvetica, sans-serif;
