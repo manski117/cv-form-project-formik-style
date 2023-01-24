@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MyForm from './components/MyForm';
@@ -57,26 +57,15 @@ function App() {
     console.log(formData);
   }, [formData]);
 
-  function formIsValid(){
-    //link this to meta.errors or isSubmitting or something
-    return true;
-  }
+  
 
   function togglePage(){
-    if (formIsValid(formData)){
       setOnFormPage(!onFormPage);
-      console.log(onFormPage);
-      
-    } else{
-      alert('Form contains missing fields');
-      console.log(formData);
-    }
-
-    
+  
   }
 
   function handleFormData(childFormValues){
-    console.log("childFormValues", childFormValues);
+    
     setFormData(childFormValues);
   };
 

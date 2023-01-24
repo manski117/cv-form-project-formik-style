@@ -5,8 +5,6 @@ function Header(props) {
     //state reflects page selected
     const onFormPage = props.selected ? true : false;
     
-    console.log(onFormPage)
-    
     //depending on selected page, one button should gain function and loose active class, while the other does the opposite.
     //this way we only need one handleClick function in the parent component
     return (
@@ -21,7 +19,7 @@ function Header(props) {
                 <button 
                     className={onFormPage ? "not-active" : "active"}
                     onClick={onFormPage ? props.handleClick : null}
-                    >Generate CV
+                    >Preview CV
                 </button>
 
             </div>

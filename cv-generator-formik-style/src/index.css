@@ -66,17 +66,39 @@ header h3{
 
 /* Form Component */
 
+.form-container{
+  display: flex;
+  flex-direction: column;
+  
+  width: 90%;
+  margin:10px auto;
+  max-width: 800px;
+  
+}
+
 .form-section{
   margin-bottom: 3rem;
   
+}
+
+form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-section-wrapper{
   display: flex;
   flex-direction: column;
   gap: 1px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: .5rem;
+  /* box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.1); */
   justify-content: start;
-  border: solid grey 1px;
+  
 }
 
 .form-section-wrapper label{
@@ -84,14 +106,46 @@ header h3{
   display: flex;
   gap: 20px;
 }
+.form-section-wrapper input{
+  font-size: 1rem;
+}
+
+textarea{
+  font-size: 1rem;
+  height: 80px;
+}
+
+.btn-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 10px;
+}
+
+.submit-btn{
+  width: 80%;
+  cursor: pointer;
+  height: 3rem;
+  font-size: 2rem;
+  border-radius: 10px;
+}
+.submit-btn:disabled{
+  opacity: .95;
+  /* filter: brightness(110%); */
+  
+}
 
 /* Resume Page */
 .resume-container{
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 20px auto;
+  margin-bottom: 50px;
   width: 90%;
   max-width: 800px;
+  width: 90%;
+  
 }
 
 .resume-container h1, .resume-container h3{
@@ -105,6 +159,8 @@ header h3{
 
 .resume-container h3{
   font-size: 2.5rem;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 
 .resume-container p{
@@ -136,6 +192,7 @@ header h3{
 .school-details{
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .work-flexbox{
@@ -144,8 +201,14 @@ header h3{
 
 }
 
-.job-details, .school-details{
-  gap:12px;
+.job-details{
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+}
+
+.job2-flexbox, .job3-flexbox{
+  margin-top: 40px;
 }
 
 .company-name-text{
@@ -166,13 +229,16 @@ footer {
 
 
 /* Form User Feedback */
-.invalid{
+.input-error{
   background-color: rgb(252, 208, 208);
   border: solid red 1px;
+  border-radius: 5px;
 }
 
 .loading-icon{
-  height: 20px;
+  height: 40px;
+  position: absolute;
+  right: 0;
 }
 
 .error{
@@ -184,7 +250,7 @@ footer {
 }
 
 .fine-print{
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .visible{
@@ -268,6 +334,10 @@ a:hover {
   header h3, h1{
     margin: 0px;
     margin-bottom: 5px;
+  }
+
+  .submit-btn{
+    height: fit-content;
   }
 
   

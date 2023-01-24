@@ -7,9 +7,7 @@ import { resumeSchema } from "../schemas";
 function MyForm({handleFormData, formData, handleClick}) {
   async function onSubmit(values, actions){
     //timeout and disabled button CSS let user know info is being submitted
-    console.log('values',values);
-    console.log('you just slammed the submit button!!!!!!!');
-    console.log('actions',actions);
+    
     handleFormData(values);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     //automatically take them to the CV page
@@ -50,356 +48,348 @@ function MyForm({handleFormData, formData, handleClick}) {
     onSubmit,
   });
 
-  console.log('data from app state', formData);
-  console.log('values', values);
-
+  //conditional rendering for button
   let icon = isSubmitting && <img className="loading-icon" src={require("../images/writing.gif")} alt="loading gif" />
   let btnText = isSubmitting ? "Generating CV!" : "Click to generate CV"
 
 
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="on">
-      <div className="bio-inputs">
-        <h3>Personal Information</h3>
-
-        <label htmlFor="firstName">First Name</label>
-        <input
-          id="firstName"
-          type="text"
-          placeholder="Enter your First Name"
-          value={values.firstName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.firstName && touched.firstName ? 'input-error' : ''}
-        />
-        {errors.firstName && touched.firstName && <p className='error'>{errors.firstName}</p>}
-        <br />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          id="lastName"
-          type="text"
-          placeholder="Enter your lastName"
-          value={values.lastName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.lastName && touched.lastName ? 'input-error' : ''}
-        />
-        {errors.lastName && touched.lastName && <p className='error'>{errors.lastName}</p>}
-        <br />
-        
-        <label htmlFor="age">Age</label>
-        <input
-          id="age"
-          type="number"
-          placeholder="Enter your age"
-          value={values.age}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.age && touched.age ? 'input-error' : ''}
-        />
-        {errors.age && touched.age && <p className='error'>{errors.age}</p>}
-        <br />
-
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="Enter your email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.email && touched.email ? 'input-error' : ''}
-        
-        />
-        {errors.email && touched.email && <p className='error'>{errors.email}</p>}
-        <br />
-        
-        <label htmlFor="phone">Phone Number</label>
-        <input
-          id="phone"
-          type="text"
-          placeholder="Enter your phone number"
-          value={values.phone}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.phone && touched.phone ? 'input-error' : ''}
-        />
-        {errors.phone && touched.phone && <p className='error'>{errors.phone}</p>}
-        <br />
-      </div>
+    <div className="form-container">
+      <form onSubmit={handleSubmit} autoComplete="on">
+        <div className="bio-inputs form-section-wrapper">
+          <h3>Personal Information</h3>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            id="firstName"
+            type="text"
+            placeholder="Enter your First Name"
+            value={values.firstName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.firstName && touched.firstName ? 'input-error' : ''}
+          />
+          {errors.firstName && touched.firstName && <p className='error'>{errors.firstName}</p>}
+          <br />
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            id="lastName"
+            type="text"
+            placeholder="Enter your lastName"
+            value={values.lastName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.lastName && touched.lastName ? 'input-error' : ''}
+          />
+          {errors.lastName && touched.lastName && <p className='error'>{errors.lastName}</p>}
+          <br />
       
-      <div className="education-inputs">
-        <h3>Education</h3>
-        <label htmlFor="school">School</label>
-        <input
-          id="school"
-          type="text"
-          placeholder="University or Academic Institution"
-          value={values.school}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.school && touched.school ? 'input-error' : ''}
-        />
-        {errors.school && touched.school && <p className='error'>{errors.school}</p>}
-        <br />
-        <label htmlFor="degree">Degree</label>
-        <input
-          id="degree"
-          type="text"
-          placeholder="Highest degree obtained"
-          value={values.degree}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.degree && touched.degree ? 'input-error' : ''}
-        />
-        {errors.degree && touched.degree && <p className='error'>{errors.degree}</p>}
-        <br />
-        <label htmlFor="major">Major</label>
-        <input
-          id="major"
-          type="text"
-          placeholder="Major, concentration, or track"
-          value={values.major}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.major && touched.major ? 'input-error' : ''}
-        />
-        {errors.major && touched.major && <p className='error'>{errors.major}</p>}
-        <br />
-        <label htmlFor="startDate">Year Enrolled</label>
-        <input
-          id="startDate"
-          type="text"
-          placeholder="Year you started school"
-          value={values.startDate}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.startDate && touched.startDate ? 'input-error' : ''}
-        />
-        {errors.startDate && touched.startDate && <p className='error'>{errors.startDate}</p>}
-        <br />
-        <label htmlFor="gradDate">Year Graduated</label>
-        <input
-          id="gradDate"
-          type="text"
-          placeholder="Enter year of graduation or expected graduation"
-          value={values.gradDate}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.gradDate && touched.gradDate ? 'input-error' : ''}
-        />
-        {errors.gradDate && touched.gradDate && <p className='error'>{errors.gradDate}</p>}
-        <br />
-      </div>
-
-      <h3>Relevant Work History</h3>
-      <div className="job-section-wrapper">
-        <h4>Job 1</h4>
-        <label htmlFor="companyName1">Company Name</label>
-        <input
-          id="companyName1"
-          type="text"
-          placeholder="Company or organization name"
-          value={values.companyName1}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.companyName1 && touched.companyName1 ? 'input-error' : ''}
-        />
-        {errors.companyName1 && touched.companyName1 && <p className='error'>{errors.companyName1}</p>}
-        <br />
-        <label htmlFor="position1">Position</label>
-        <input
-          id="position1"
-          type="text"
-          placeholder="Position/Title/Role"
-          value={values.position1}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.position1 && touched.position1 ? 'input-error' : ''}
-        />
-        {errors.position1 && touched.position1 && <p className='error'>{errors.position1}</p>}
-        <br />
-        <label htmlFor="tasks1">Tasks</label>
-        <textarea
-          id="tasks1"
-          type="textarea"
-          maxLength={200}
-          placeholder="Description of duties"
-          value={values.tasks1}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.tasks1 && touched.tasks1 ? 'input-error' : ''}
-        />
-        {errors.tasks1 && touched.tasks1 && <p className='error'>{errors.tasks1}</p>}
-        <br />
-
-        <label htmlFor="startDate1">Started</label>
-        <input
-          id="jobStartDate1"
-          type="text"
-          placeholder="Year hired"
-          value={values.jobStartDate1}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.jobStartDate1 && touched.jobStartDate1 ? 'input-error' : ''}
-        />
-        {errors.jobStartDate1 && touched.jobStartDate1 && <p className='error'>{errors.jobStartDate1}</p>}
-        <br />
-
-        <label htmlFor="jobEndDate1">Left</label>
-        <input
-          id="jobEndDate1"
-          type="text"
-          placeholder="Last year or present job"
-          value={values.jobEndDate1}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.jobEndDate1 && touched.jobEndDate1 ? 'input-error' : ''}
-        />
-        {errors.jobEndDate1 && touched.jobEndDate1 && <p className='error'>{errors.jobEndDate1}</p>}
-        <br />
-      </div>
-
-      <div className="job-section-wrapper">
-        <h4>Job 2</h4>
-        <label htmlFor="companyName2">Company Name</label>
-        <input
-          id="companyName2"
-          type="text"
-          placeholder="Company or organization name"
-          value={values.companyName2}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.companyName2 && touched.companyName2 ? 'input-error' : ''}
-        />
-        {errors.companyName2 && touched.companyName2 && <p className='error'>{errors.companyName2}</p>}
-        <br />
-        <label htmlFor="position2">Position</label>
-        <input
-          id="position2"
-          type="text"
-          placeholder="Position/Title/Role"
-          value={values.position2}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.position2 && touched.position2 ? 'input-error' : ''}
-        />
-        {errors.position2 && touched.position2 && <p className='error'>{errors.position2}</p>}
-        <br />
-        <label htmlFor="tasks2">Tasks</label>
-        <textarea
-          id="tasks2"
-          type="textarea"
-          maxLength={200}
-          placeholder="Description of duties"
-          value={values.tasks2}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.tasks2 && touched.tasks2 ? 'input-error' : ''}
-        />
-        {errors.tasks2 && touched.tasks2 && <p className='error'>{errors.tasks2}</p>}
-        <br />
-
-        <label htmlFor="startDate2">Started</label>
-        <input
-          id="jobStartDate2"
-          type="text"
-          placeholder="Year hired"
-          value={values.jobStartDate2}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.jobStartDate2 && touched.jobStartDate2 ? 'input-error' : ''}
-        />
-        {errors.jobStartDate2 && touched.jobStartDate2 && <p className='error'>{errors.jobStartDate2}</p>}
-        <br />
-
-        <label htmlFor="jobEndDate2">Left</label>
-        <input
-          id="jobEndDate2"
-          type="text"
-          placeholder="Last year or present job"
-          value={values.jobEndDate2}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.jobEndDate2 && touched.jobEndDate2 ? 'input-error' : ''}
-        />
-        {errors.jobEndDate2 && touched.jobEndDate2 && <p className='error'>{errors.jobEndDate2}</p>}
-        <br />
-      </div>
-
-      <div className="job-section-wrapper">
-        <h4>Job 3</h4>
-        <label htmlFor="companyName3">Company Name</label>
-        <input
-          id="companyName3"
-          type="text"
-          placeholder="Company or organization name"
-          value={values.companyName3}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.companyName3 && touched.companyName3 ? 'input-error' : ''}
-        />
-        {errors.companyName3 && touched.companyName3 && <p className='error'>{errors.companyName3}</p>}
-        <br />
-        <label htmlFor="position3">Position</label>
-        <input
-          id="position3"
-          type="text"
-          placeholder="Position/Title/Role"
-          value={values.position3}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.position3 && touched.position3 ? 'input-error' : ''}
-        />
-        {errors.position3 && touched.position3 && <p className='error'>{errors.position3}</p>}
-        <br />
-        <label htmlFor="tasks3">Tasks</label>
-        <textarea
-          id="tasks3"
-          type="textarea"
-          maxLength={200}
-          placeholder="Description of duties"
-          value={values.tasks3}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.tasks3 && touched.tasks3 ? 'input-error' : ''}
-        />
-        {errors.tasks3 && touched.tasks3 && <p className='error'>{errors.tasks3}</p>}
-        <br />
-
-        <label htmlFor="startDate3">Started</label>
-        <input
-          id="jobStartDate3"
-          type="text"
-          placeholder="Year hired"
-          value={values.jobStartDate3}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.jobStartDate3 && touched.jobStartDate3 ? 'input-error' : ''}
-        />
-        {errors.jobStartDate3 && touched.jobStartDate3 && <p className='error'>{errors.jobStartDate3}</p>}
-        <br />
-
-        <label htmlFor="jobEndDate3">Left</label>
-        <input
-          id="jobEndDate3"
-          type="text"
-          placeholder="Last year or present job"
-          value={values.jobEndDate3}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={errors.jobEndDate3 && touched.jobEndDate3 ? 'input-error' : ''}
-        />
-        {errors.jobEndDate3 && touched.jobEndDate3 && <p className='error'>{errors.jobEndDate3}</p>}
-        <br />
-      </div>
-
+          <label htmlFor="age">Age</label>
+          <input
+            id="age"
+            type="number"
+            placeholder="Enter your age"
+            value={values.age}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.age && touched.age ? 'input-error' : ''}
+          />
+          {errors.age && touched.age && <p className='error'>{errors.age}</p>}
+          <br />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.email && touched.email ? 'input-error' : ''}
       
-      <button disabled={isSubmitting} type="submit">{btnText}</button>
-      {icon}
+          />
+          {errors.email && touched.email && <p className='error'>{errors.email}</p>}
+          <br />
       
-    </form>
+          <label htmlFor="phone">Phone Number</label>
+          <input
+            id="phone"
+            type="text"
+            placeholder="Enter your phone number"
+            value={values.phone}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.phone && touched.phone ? 'input-error' : ''}
+          />
+          {errors.phone && touched.phone && <p className='error'>{errors.phone}</p>}
+          <br />
+        </div>
+      
+        <div className="education-inputs form-section-wrapper">
+          <h3>Education</h3>
+          <label htmlFor="school">School</label>
+          <input
+            id="school"
+            type="text"
+            placeholder="University or Academic Institution"
+            value={values.school}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.school && touched.school ? 'input-error' : ''}
+          />
+          {errors.school && touched.school && <p className='error'>{errors.school}</p>}
+          <br />
+          <label htmlFor="degree">Degree</label>
+          <input
+            id="degree"
+            type="text"
+            placeholder="Highest degree obtained"
+            value={values.degree}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.degree && touched.degree ? 'input-error' : ''}
+          />
+          {errors.degree && touched.degree && <p className='error'>{errors.degree}</p>}
+          <br />
+          <label htmlFor="major">Major</label>
+          <input
+            id="major"
+            type="text"
+            placeholder="Major, concentration, or track"
+            value={values.major}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.major && touched.major ? 'input-error' : ''}
+          />
+          {errors.major && touched.major && <p className='error'>{errors.major}</p>}
+          <br />
+          <label htmlFor="startDate">Year Enrolled</label>
+          <input
+            id="startDate"
+            type="text"
+            placeholder="Year you started school"
+            value={values.startDate}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.startDate && touched.startDate ? 'input-error' : ''}
+          />
+          {errors.startDate && touched.startDate && <p className='error'>{errors.startDate}</p>}
+          <br />
+          <label htmlFor="gradDate">Year Graduated</label>
+          <input
+            id="gradDate"
+            type="text"
+            placeholder="Enter year of graduation or expected graduation"
+            value={values.gradDate}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.gradDate && touched.gradDate ? 'input-error' : ''}
+          />
+          {errors.gradDate && touched.gradDate && <p className='error'>{errors.gradDate}</p>}
+          <br />
+        </div>
+        
+        <div className="job-section-wrapper form-section-wrapper">
+        <h3>Relevant Work History</h3>
+          <h4>Job 1</h4>
+          <label htmlFor="companyName1">Company Name</label>
+          <input
+            id="companyName1"
+            type="text"
+            placeholder="Company or organization name"
+            value={values.companyName1}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.companyName1 && touched.companyName1 ? 'input-error' : ''}
+          />
+          {errors.companyName1 && touched.companyName1 && <p className='error'>{errors.companyName1}</p>}
+          <br />
+          <label htmlFor="position1">Position</label>
+          <input
+            id="position1"
+            type="text"
+            placeholder="Position/Title/Role"
+            value={values.position1}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.position1 && touched.position1 ? 'input-error' : ''}
+          />
+          {errors.position1 && touched.position1 && <p className='error'>{errors.position1}</p>}
+          <br />
+          <label htmlFor="tasks1">Tasks</label>
+          <textarea
+            id="tasks1"
+            type="textarea"
+            maxLength={200}
+            placeholder="Description of duties"
+            value={values.tasks1}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.tasks1 && touched.tasks1 ? 'input-error' : ''}
+          />
+          {errors.tasks1 && touched.tasks1 && <p className='error'>{errors.tasks1}</p>}
+          <br />
+          <label htmlFor="startDate1">Started</label>
+          <input
+            id="jobStartDate1"
+            type="text"
+            placeholder="Year hired"
+            value={values.jobStartDate1}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.jobStartDate1 && touched.jobStartDate1 ? 'input-error' : ''}
+          />
+          {errors.jobStartDate1 && touched.jobStartDate1 && <p className='error'>{errors.jobStartDate1}</p>}
+          <br />
+          <label htmlFor="jobEndDate1">Left</label>
+          <input
+            id="jobEndDate1"
+            type="text"
+            placeholder="Last year or present job"
+            value={values.jobEndDate1}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.jobEndDate1 && touched.jobEndDate1 ? 'input-error' : ''}
+          />
+          {errors.jobEndDate1 && touched.jobEndDate1 && <p className='error'>{errors.jobEndDate1}</p>}
+          <br />
+        </div>
+        <div className="job-section-wrapper form-section-wrapper">
+          <h4>Job 2</h4>
+          <label htmlFor="companyName2">Company Name</label>
+          <input
+            id="companyName2"
+            type="text"
+            placeholder="Company or organization name"
+            value={values.companyName2}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.companyName2 && touched.companyName2 ? 'input-error' : ''}
+          />
+          {errors.companyName2 && touched.companyName2 && <p className='error'>{errors.companyName2}</p>}
+          <br />
+          <label htmlFor="position2">Position</label>
+          <input
+            id="position2"
+            type="text"
+            placeholder="Position/Title/Role"
+            value={values.position2}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.position2 && touched.position2 ? 'input-error' : ''}
+          />
+          {errors.position2 && touched.position2 && <p className='error'>{errors.position2}</p>}
+          <br />
+          <label htmlFor="tasks2">Tasks</label>
+          <textarea
+            id="tasks2"
+            type="textarea"
+            maxLength={200}
+            placeholder="Description of duties"
+            value={values.tasks2}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.tasks2 && touched.tasks2 ? 'input-error' : ''}
+          />
+          {errors.tasks2 && touched.tasks2 && <p className='error'>{errors.tasks2}</p>}
+          <br />
+          <label htmlFor="startDate2">Started</label>
+          <input
+            id="jobStartDate2"
+            type="text"
+            placeholder="Year hired"
+            value={values.jobStartDate2}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.jobStartDate2 && touched.jobStartDate2 ? 'input-error' : ''}
+          />
+          {errors.jobStartDate2 && touched.jobStartDate2 && <p className='error'>{errors.jobStartDate2}</p>}
+          <br />
+          <label htmlFor="jobEndDate2">Left</label>
+          <input
+            id="jobEndDate2"
+            type="text"
+            placeholder="Last year worked"
+            value={values.jobEndDate2}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.jobEndDate2 && touched.jobEndDate2 ? 'input-error' : ''}
+          />
+          {errors.jobEndDate2 && touched.jobEndDate2 && <p className='error'>{errors.jobEndDate2}</p>}
+          <br />
+        </div>
+        <div className="job-section-wrapper form-section-wrapper">
+          <h4>Job 3</h4>
+          <label htmlFor="companyName3">Company Name</label>
+          <input
+            id="companyName3"
+            type="text"
+            placeholder="Company or organization name"
+            value={values.companyName3}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.companyName3 && touched.companyName3 ? 'input-error' : ''}
+          />
+          {errors.companyName3 && touched.companyName3 && <p className='error'>{errors.companyName3}</p>}
+          <br />
+          <label htmlFor="position3">Position</label>
+          <input
+            id="position3"
+            type="text"
+            placeholder="Position/Title/Role"
+            value={values.position3}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.position3 && touched.position3 ? 'input-error' : ''}
+          />
+          {errors.position3 && touched.position3 && <p className='error'>{errors.position3}</p>}
+          <br />
+          <label htmlFor="tasks3">Tasks</label>
+          <textarea
+            id="tasks3"
+            type="textarea"
+            maxLength={200}
+            placeholder="Description of duties"
+            value={values.tasks3}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.tasks3 && touched.tasks3 ? 'input-error' : ''}
+          />
+          {errors.tasks3 && touched.tasks3 && <p className='error'>{errors.tasks3}</p>}
+          <br />
+          <label htmlFor="startDate3">Started</label>
+          <input
+            id="jobStartDate3"
+            type="text"
+            placeholder="Year hired"
+            value={values.jobStartDate3}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.jobStartDate3 && touched.jobStartDate3 ? 'input-error' : ''}
+          />
+          {errors.jobStartDate3 && touched.jobStartDate3 && <p className='error'>{errors.jobStartDate3}</p>}
+          <br />
+          <label htmlFor="jobEndDate3">Left</label>
+          <input
+            id="jobEndDate3"
+            type="text"
+            placeholder="Last year worked"
+            value={values.jobEndDate3}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.jobEndDate3 && touched.jobEndDate3 ? 'input-error' : ''}
+          />
+          {errors.jobEndDate3 && touched.jobEndDate3 && <p className='error'>{errors.jobEndDate3}</p>}
+          <br />
+          <p className="fine-print">(* = required fields)</p>
+        </div>
+      
+        <div className="btn-wrapper">
+          <button className="submit-btn" disabled={isSubmitting} type="submit">{btnText}</button>
+          {icon}
+        </div>
+      
+      </form>
+    </div>
   );
 }
 
