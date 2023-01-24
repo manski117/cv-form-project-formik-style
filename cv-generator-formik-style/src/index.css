@@ -171,6 +171,10 @@ footer {
   border: solid red 1px;
 }
 
+.loading-icon{
+  height: 20px;
+}
+
 .error{
   margin: 0;
   font-size: 0.8rem;

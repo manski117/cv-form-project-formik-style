@@ -45,7 +45,7 @@ function App() {
   );
 
   //conditionally render what content renders based on page selection
-  const currentPage = onFormPage ? <MyForm handleFormData={handleFormData} formData={formData} /> : <Resume formData={formData} />
+  const currentPage = onFormPage ? <MyForm handleFormData={handleFormData} formData={formData} handleClick={togglePage} /> : <Resume formData={formData} />
 
   
   
