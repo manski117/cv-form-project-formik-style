@@ -13,33 +13,35 @@ import { resumeSchema } from "../schemas";
 //   actions.resetForm();
 // }
 
-function MyForm({handleFormData}) {
+function MyForm({handleFormData, formData}) {
   async function onSubmit(values, actions){
     //timeout and disabled button CSS let user know info is being submitted
     console.log('values',values);
     console.log('actions',actions);
     handleFormData(values);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    actions.resetForm();
   }
   //any formik component must define 3 key props: initial values, validate, and onSubmit handler.
   //handleSubmit just calls onSubmit
   const {values, errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting} = useFormik({
+    enableReinitialize: false,
     initialValues: {
-      age: '',
-      email: '',
-      firstName: '',
-      lastName: '',
-      phone: '',
-      school: '',
-      degree: '',
-      major:'',
-      startDate: '',
-      gradDate: '',
+      age: formData.age,
+      email: formData.email,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone: formData.phone,
+      school: formData.school,
+      degree: formData.degree,
+      major:formData.major,
+      startDate: formData.startDate,
+      gradDate: formData.gradDate,
     },
     validationSchema: resumeSchema,
     onSubmit,
   });
+
+  console.log('data from app state', formData);
 
 
 

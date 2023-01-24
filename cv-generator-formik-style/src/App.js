@@ -14,13 +14,23 @@ function App() {
   const [onFormPage, setOnFormPage] = React.useState(true);
   //set state
   const [formData, setFormData] = React.useState({
+    age: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    school: '',
+    degree: '',
+    major:'',
+    startDate: '',
+    gradDate: '',
 
   }
 
   );
 
   //conditionally render what content renders based on page selection
-  const currentPage = onFormPage ? <MyForm handleFormData={handleFormData} /> : <Resume formData={formData} />
+  const currentPage = onFormPage ? <MyForm handleFormData={handleFormData} formData={formData} /> : <Resume formData={formData} />
 
   
   

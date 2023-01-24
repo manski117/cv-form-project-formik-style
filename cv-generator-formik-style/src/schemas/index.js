@@ -45,7 +45,7 @@ export const resumeSchema = yup.object().shape({
     .date()
     .min(
         yup.ref('startDate'),
-        ({ min }) => `Date needs to be before ${formatDate(min)}!!`,
+        ({ min }) => `Date needs to be after ${formatDate(min)}!!`,
       ).required('Required'),
     
 
